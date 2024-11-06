@@ -4,187 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Cool Website</title>
-  <!-- Importing Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Link to favicon.ico (Make sure this path is correct) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Reset some default styles */
+    /* Resetting some default styles for a cleaner look */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /*Background Image */
+    /* Basic body styling with Roboto Condensed font */
     body {
-            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdark-blue-website-background&psig=AOvVaw03ee-dXJDwMw4kDVhE7Doj&ust=1730997566486000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLDgyN-SyIkDFQAAAAAdAAAAABAE');
-            background-size: cover; /* Ensures the image covers the whole page */
-        }
-
-    /* Body Styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #181818; /* Darker background for ChatGPT-like theme */
-      color: #e0e0e0; /* Lighter text */
-      height: 2000px; /* To enable scrolling */
-      padding-top: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      background-image: url('https://wallpaper.dog/large/10921241.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      min-height: 100vh;
+      background-attachment: fixed;
     }
 
-    /* Scroll Progress Bar */
-    .progress-bar-container {
+    /* Styling for the progress bar container */
+    #progressBarContainer {
+      width: 100%;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.3);
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 4px;
-      background-color: rgba(255, 255, 255, 0.2); /* Subtle background */
+      z-index: 9999;
     }
 
-    .progress-bar {
+    /* Styling for the progress bar with dark blue color */
+    #progressBar {
       height: 100%;
       width: 0;
-      background-color: rgba(255, 255, 255, 0.6); /* Light, subtle white */
+      background-color: #2132c9;
+      transition: width 0.1s linear;
     }
 
-    /* Welcome Text */
-    .welcome-text {
-      text-align: center;
-      font-size: 3em;
-      font-weight: 700;
-      color: #007bff; /* Blue color */
-      text-transform: uppercase;
-      margin-top: 70px;
-      padding: 20px;
-      background-color: rgba(0, 123, 255, 0.1); /* Slightly transparent blue background */
-      border-radius: 15px; /* Rounded corners */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for the box */
-      width: 80%;
-      max-width: 600px;
-      margin: 70px auto 20px auto;
-    }
-
-    /* Section Styling */
-    .section {
-      background-color: rgba(255, 255, 255, 0.1);
-      margin: 20px auto;
-      padding: 40px;
-      width: 80%;
-      max-width: 600px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .section:hover {
-      transform: scale(1.05);
-    }
-
-    h2 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      color: #fff;
-      font-family: 'Roboto Slab', serif; /* Slab font for section titles */
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #ccc;
-      font-family: 'Roboto Condensed', sans-serif; /* Condensed font for paragraphs */
-    }
-
-    /* Hidden Info */
-    .hidden-info {
-      display: none;
-      margin-top: 20px;
-      color: #bbb;
-    }
-
-    /* Fade-in sections */
+    /* Styling for each section */
     .section {
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 0.8s, transform 0.8s;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      margin: 20px 0;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 90%;
+      max-width: 600px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
     }
 
+    /* Show class applied on scroll */
     .section.show {
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* Additional styling for text */
+    h1, h2 {
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: #b0b0b0;
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Scroll Progress Bar -->
-  <div class="progress-bar-container">
-    <div class="progress-bar" id="progressBar"></div>
+  <!-- Progress bar container -->
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
   </div>
 
-  <!-- Welcome Text in a Box -->
-  <div class="welcome-text">Welcome to My Website</div>
-
-  <!-- About Me Section -->
-  <div class="section" onclick="toggleInfo(this)">
+  <!-- Content with modern styling -->
+  <div class="section fade-in">
+    <h1>Welcome to My Website</h1>
+    <p>Discover who I am, what I do, and what I'm passionate about!</p>
+  </div>
+  <div class="section fade-in">
     <h2>About Me</h2>
-    <p>Click to see more about me.</p>
-    <div class="hidden-info">
-      <p>I am a passionate web developer with a love for creating beautiful and functional websites. I enjoy working with new technologies and building impactful solutions.</p>
-    </div>
+    <p>I'm a creative professional who loves to build web experiences that stand out. With a focus on aesthetics and functionality, I bring ideas to life.</p>
   </div>
-
-  <!-- My Projects Section -->
-  <div class="section" onclick="toggleInfo(this)">
+  <div class="section fade-in">
     <h2>My Projects</h2>
-    <p>Click to see my projects.</p>
-    <div class="hidden-info">
-      <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios. Each project is a new adventure!</p>
-    </div>
+    <p>From web apps to design portfolios, explore my work to see what I've created and collaborated on. Each project represents a part of my journey in tech and design.</p>
   </div>
-
-  <!-- Skills Section -->
-  <div class="section" onclick="toggleInfo(this)">
-    <h2>My Skills</h2>
-    <p>Click to see my skills.</p>
-    <div class="hidden-info">
-      <p>I specialize in JavaScript, React, Node.js, HTML, and CSS. I’m always learning new skills to stay up-to-date with the tech world!</p>
-    </div>
-  </div>
-
-  <!-- Hobbies Section -->
-  <div class="section" onclick="toggleInfo(this)">
-    <h2>My Hobbies</h2>
-    <p>Click to see my hobbies.</p>
-    <div class="hidden-info">
-      <p>In my free time, I love playing video games, reading, and exploring new technology trends. I’m always trying to expand my knowledge in fun ways!</p>
-    </div>
+  <div class="section fade-in">
+    <h2>Contact Me</h2>
+    <p>Let's connect! Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
   </div>
 
   <script>
-    // Function to toggle the visibility of hidden information on click
-    function toggleInfo(section) {
-      const hiddenInfo = section.querySelector(".hidden-info");
-      hiddenInfo.style.display = hiddenInfo.style.display === "none" ? "block" : "none";
-    }
-
-    // Function to update the scroll progress bar
-    window.onscroll = function() {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPosition = window.scrollY;
-      const progress = (scrollPosition / totalHeight) * 100;
-      document.getElementById("progressBar").style.width = progress + "%";
-    };
-
-    // Fade-in sections as you scroll
+    // JavaScript for fade-in effect on scroll
     document.addEventListener("DOMContentLoaded", function() {
-      const sections = document.querySelectorAll(".section");
+      const sections = document.querySelectorAll(".fade-in");
 
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add("show");
-              observer.unobserve(entry.target); // Stop observing after fade-in
+              observer.unobserve(entry.target); // Optional: stops observing once the element is shown
             }
           });
         },
@@ -195,7 +135,16 @@
         observer.observe(section);
       });
     });
-  </script>
 
+    // JavaScript for updating progress bar based on scroll position
+    window.addEventListener("scroll", function() {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+
+      const progressBar = document.getElementById("progressBar");
+      progressBar.style.width = `${scrollPercentage}%`;
+    });
+  </script>
 </body>
-</html>
+</html>a
