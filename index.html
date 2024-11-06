@@ -5,26 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Cool Website</title>
   <style>
-    /* Resetting some default styles */
+    /* Reset some default styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Basic body styling */
+    /* Body Styling */
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #1e1e2f, #3b3b98);
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px;
-      height: 2000px; /* To make sure we can scroll */
+      color: #fff;
+      height: 2000px; /* To enable scrolling */
+      padding-top: 20px;
     }
 
-    /* Scroll progress bar at the top */
+    /* Scroll Progress Bar */
     .progress-bar-container {
       position: fixed;
       top: 0;
@@ -36,25 +33,22 @@
 
     .progress-bar {
       height: 100%;
-      width: 0%;
+      width: 0;
       background-color: #ffdd57;
-      transition: width 0.2s ease;
     }
 
-    /* Styling for the funky welcome text */
+    /* Welcome Text */
     .welcome-text {
-      font-size: 2.5em;
-      color: #ffdd57;
-      font-weight: bold;
-      text-transform: uppercase;
       text-align: center;
-      letter-spacing: 3px;
+      font-size: 3em;
+      font-weight: bold;
+      color: #ffdd57;
+      text-transform: uppercase;
+      margin-top: 70px;
       animation: color-change 6s ease infinite;
-      margin-bottom: 30px;
-      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
     }
 
-    /* Animated color-changing effect */
+    /* Color-changing animation for welcome text */
     @keyframes color-change {
       0% { color: #ffdd57; }
       25% { color: #ff6b6b; }
@@ -63,106 +57,101 @@
       100% { color: #ffdd57; }
     }
 
-    /* Styling for each section */
+    /* Section Styling */
     .section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      margin: 20px 0;
-      padding: 40px;
       background-color: rgba(255, 255, 255, 0.1);
-      width: 90%;
+      margin: 20px auto;
+      padding: 40px;
+      width: 80%;
       max-width: 600px;
       border-radius: 15px;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      cursor: pointer; /* Makes it look clickable */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    /* Show class applied on scroll */
-    .section.show {
-      opacity: 1;
-      transform: translateY(0);
+    .section:hover {
+      transform: scale(1.05);
     }
 
-    /* Hidden info styling */
-    .hidden-info {
-      display: none;
-      margin-top: 20px;
-      color: #b0b0b0;
-    }
-
-    /* Additional styling for text */
     h2 {
-      font-weight: 300;
+      font-size: 1.8em;
       margin-bottom: 15px;
-      color: #e0e0e0;
-      letter-spacing: 1px;
+      color: #fff;
     }
 
     p {
-      color: #b0b0b0;
-      line-height: 1.6;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      color: #ccc;
     }
 
-    /* Gradient animation for body background */
-    body {
-      animation: gradient 8s ease infinite;
-      background-size: 400% 400%;
+    /* Hidden Info */
+    .hidden-info {
+      display: none;
+      margin-top: 20px;
+      color: #bbb;
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Animation for fading sections */
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s, transform 0.8s;
     }
+
+    .section {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
   </style>
 </head>
 <body>
-  <!-- Scroll progress bar at the top -->
+
+  <!-- Scroll Progress Bar -->
   <div class="progress-bar-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <!-- Funky welcome text outside the box -->
+  <!-- Welcome Text -->
   <div class="welcome-text">Welcome to My Website</div>
 
-  <!-- Clickable sections with hidden content -->
+  <!-- About Me Section -->
   <div class="section" onclick="toggleInfo(this)">
     <h2>About Me</h2>
-    <p>Click to see more info about me.</p>
+    <p>Click to see more about me.</p>
     <div class="hidden-info">
-      <p>I'm a creative professional who loves to build web experiences that stand out. With a focus on aesthetics and functionality, I bring ideas to life!</p>
+      <p>I am a passionate web developer with a love for creating beautiful and functional websites. I enjoy working with new technologies and building impactful solutions.</p>
     </div>
   </div>
 
+  <!-- Projects Section -->
   <div class="section" onclick="toggleInfo(this)">
     <h2>My Projects</h2>
-    <p>Click to see more info about my projects.</p>
+    <p>Click to see my projects.</p>
     <div class="hidden-info">
-      <p>From web apps to design portfolios, explore my work to see what I've created and collaborated on. Each project represents a part of my journey in tech and design!</p>
+      <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios. Each project is a new adventure!</p>
     </div>
   </div>
 
+  <!-- Contact Section -->
   <div class="section" onclick="toggleInfo(this)">
     <h2>Contact Me</h2>
-    <p>Click to see how you can contact me.</p>
+    <p>Click to contact me.</p>
     <div class="hidden-info">
-      <p>Let's connect! Reach out if you'd like to collaborate, ask questions, or just say hello. I’d love to hear from you!</p>
+      <p>If you'd like to collaborate or just chat, feel free to reach out to me anytime. I'm always open to new ideas and opportunities!</p>
     </div>
   </div>
 
   <script>
-    // Function to toggle hidden information on click
+    // Function to toggle the visibility of hidden information on click
     function toggleInfo(section) {
       const hiddenInfo = section.querySelector(".hidden-info");
-      hiddenInfo.style.display = hiddenInfo.style.display === "none" || hiddenInfo.style.display === "" ? "block" : "none";
+      hiddenInfo.style.display = hiddenInfo.style.display === "none" ? "block" : "none";
     }
 
-    // Scroll progress bar
+    // Function to update the scroll progress bar
     window.onscroll = function() {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPosition = window.scrollY;
@@ -170,9 +159,9 @@
       document.getElementById("progressBar").style.width = progress + "%";
     };
 
-    // JavaScript for fade-in effect on scroll
+    // Fade-in sections as you scroll
     document.addEventListener("DOMContentLoaded", function() {
-      const sections = document.querySelectorAll(".fade-in");
+      const sections = document.querySelectorAll(".section");
 
       const observer = new IntersectionObserver(
         entries => {
@@ -191,5 +180,6 @@
       });
     });
   </script>
+
 </body>
 </html>
