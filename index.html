@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Cool Website</title>
   <style>
-    /* Resetting some default styles for a cleaner look */
+    /* Resetting some default styles */
     * {
       margin: 0;
       padding: 0;
@@ -23,6 +23,28 @@
       padding: 40px;
     }
 
+    /* Styling for the funky welcome text */
+    .welcome-text {
+      font-size: 2.5em;
+      color: #ffdd57;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      animation: color-change 6s ease infinite;
+      margin-bottom: 30px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Animated color-changing effect */
+    @keyframes color-change {
+      0% { color: #ffdd57; }
+      25% { color: #ff6b6b; }
+      50% { color: #4ecdc4; }
+      75% { color: #c3aaff; }
+      100% { color: #ffdd57; }
+    }
+
     /* Styling for each section */
     .section {
       opacity: 0;
@@ -38,6 +60,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
+      cursor: pointer; /* Makes it look clickable */
     }
 
     /* Show class applied on scroll */
@@ -46,8 +69,15 @@
       transform: translateY(0);
     }
 
+    /* Hidden info styling */
+    .hidden-info {
+      display: none;
+      margin-top: 20px;
+      color: #b0b0b0;
+    }
+
     /* Additional styling for text */
-    h1, h2 {
+    h2 {
       font-weight: 300;
       margin-bottom: 15px;
       color: #e0e0e0;
@@ -60,7 +90,7 @@
       font-size: 1.1em;
     }
 
-    /* Adding a bit of animation to the gradient background */
+    /* Gradient animation for body background */
     body {
       animation: gradient 8s ease infinite;
       background-size: 400% 400%;
@@ -74,25 +104,41 @@
   </style>
 </head>
 <body>
-  <!-- Content with modern styling -->
-  <div class="section fade-in">
-    <h1>Welcome to My Website</h1>
-    <p>Discover who I am, what I do, and what I'm passionate about!</p>
-  </div>
-  <div class="section fade-in">
+  <!-- Funky welcome text outside the box -->
+  <div class="welcome-text">Welcome to My Website</div>
+
+  <!-- Clickable sections with hidden content -->
+  <div class="section" onclick="toggleInfo(this)">
     <h2>About Me</h2>
-    <p>I'm a creative professional who loves to build web experiences that stand out. With a focus on aesthetics and functionality, I bring ideas to life.</p>
+    <p>Click to see more info about me.</p>
+    <div class="hidden-info">
+      <p>I'm a creative professional who loves to build web experiences that stand out. With a focus on aesthetics and functionality, I bring ideas to life!</p>
+    </div>
   </div>
-  <div class="section fade-in">
+
+  <div class="section" onclick="toggleInfo(this)">
     <h2>My Projects</h2>
-    <p>From web apps to design portfolios, explore my work to see what I've created and collaborated on. Each project represents a part of my journey in tech and design.</p>
+    <p>Click to see more info about my projects.</p>
+    <div class="hidden-info">
+      <p>From web apps to design portfolios, explore my work to see what I've created and collaborated on. Each project represents a part of my journey in tech and design!</p>
+    </div>
   </div>
-  <div class="section fade-in">
+
+  <div class="section" onclick="toggleInfo(this)">
     <h2>Contact Me</h2>
-    <p>Let's connect! Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
+    <p>Click to see how you can contact me.</p>
+    <div class="hidden-info">
+      <p>Let's connect! Reach out if you'd like to collaborate, ask questions, or just say hello. I’d love to hear from you!</p>
+    </div>
   </div>
 
   <script>
+    // Function to toggle hidden information on click
+    function toggleInfo(section) {
+      const hiddenInfo = section.querySelector(".hidden-info");
+      hiddenInfo.style.display = hiddenInfo.style.display === "none" || hiddenInfo.style.display === "" ? "block" : "none";
+    }
+
     // JavaScript for fade-in effect on scroll
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll(".fade-in");
@@ -102,7 +148,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add("show");
-              observer.unobserve(entry.target); // Optional: stops observing once the element is shown
+              observer.unobserve(entry.target); // Stop observing after fade-in
             }
           });
         },
