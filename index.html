@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Cool Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Reset some default styles */
     * {
@@ -14,9 +15,9 @@
 
     /* Body Styling */
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #1e1e2f, #3b3b98);
-      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      background: #121212; /* Dark theme background */
+      color: #f1f1f1;
       height: 2000px; /* To enable scrolling */
       padding-top: 20px;
     }
@@ -41,20 +42,10 @@
     .welcome-text {
       text-align: center;
       font-size: 3em;
-      font-weight: bold;
+      font-weight: 700;
       color: #ffdd57;
       text-transform: uppercase;
       margin-top: 70px;
-      animation: color-change 6s ease infinite;
-    }
-
-    /* Color-changing animation for welcome text */
-    @keyframes color-change {
-      0% { color: #ffdd57; }
-      25% { color: #ff6b6b; }
-      50% { color: #4ecdc4; }
-      75% { color: #c3aaff; }
-      100% { color: #ffdd57; }
     }
 
     /* Section Styling */
@@ -79,11 +70,13 @@
       font-size: 1.8em;
       margin-bottom: 15px;
       color: #fff;
+      font-family: 'Roboto Slab', serif; /* Slab font for section titles */
     }
 
     p {
       font-size: 1.2em;
       color: #ccc;
+      font-family: 'Roboto Condensed', sans-serif; /* Condensed font for paragraphs */
     }
 
     /* Hidden Info */
