@@ -17,8 +17,8 @@
     /* Body Styling */
     body {
       font-family: 'Roboto', sans-serif;
-      background: #121212; /* Dark theme background */
-      color: #f1f1f1;
+      background: #181818; /* Darker background for ChatGPT-like theme */
+      color: #e0e0e0; /* Lighter text */
       height: 2000px; /* To enable scrolling */
       padding-top: 20px;
     }
@@ -47,6 +47,25 @@
       color: #ffdd57;
       text-transform: uppercase;
       margin-top: 70px;
+      animation: colorChange 5s infinite; /* Color change effect */
+    }
+
+    @keyframes colorChange {
+      0% {
+        color: #ffdd57;
+      }
+      25% {
+        color: #64ffda;
+      }
+      50% {
+        color: #00bcd4;
+      }
+      75% {
+        color: #f50057;
+      }
+      100% {
+        color: #ffdd57;
+      }
     }
 
     /* Section Styling */
