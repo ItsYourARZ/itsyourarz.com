@@ -28,13 +28,13 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background-color: #ddd;
+      background-color: rgba(255, 255, 255, 0.2); /* Subtle background */
     }
 
     .progress-bar {
       height: 100%;
       width: 0;
-      background-color: #ffdd57;
+      background-color: rgba(255, 255, 255, 0.6); /* Light, subtle white */
     }
 
     /* Welcome Text */
@@ -132,6 +132,24 @@
     <p>Click to see my projects.</p>
     <div class="hidden-info">
       <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios. Each project is a new adventure!</p>
+    </div>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="section" onclick="toggleInfo(this)">
+    <h2>My Skills</h2>
+    <p>Click to see my skills.</p>
+    <div class="hidden-info">
+      <p>I specialize in JavaScript, React, Node.js, HTML, and CSS. I’m always learning new skills to stay up-to-date with the tech world!</p>
+    </div>
+  </div>
+
+  <!-- Hobbies Section -->
+  <div class="section" onclick="toggleInfo(this)">
+    <h2>My Hobbies</h2>
+    <p>Click to see my hobbies.</p>
+    <div class="hidden-info">
+      <p>In my free time, I love playing video games, reading, and exploring new technology trends. I’m always trying to expand my knowledge in fun ways!</p>
     </div>
   </div>
 
