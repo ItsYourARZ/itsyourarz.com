@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Cool Website</title>
+  <title>The ARS Realm</title>
 
   <!-- Link to favicon.ico (Make sure this path is correct) -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Resetting some default styles for a cleaner look */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Basic body styling with Roboto Condensed font */
     body {
       font-family: 'Roboto Condensed', sans-serif;
       background-image: url('https://wallpaper.dog/large/10921241.jpg');
@@ -33,7 +34,6 @@
       background-attachment: fixed;
     }
 
-    /* Styling for the progress bar container */
     #progressBarContainer {
       width: 100%;
       height: 3px;
@@ -44,7 +44,6 @@
       z-index: 9999;
     }
 
-    /* Styling for the progress bar with dark blue color */
     #progressBar {
       height: 100%;
       width: 0;
@@ -52,13 +51,12 @@
       transition: width 0.1s linear;
     }
 
-    /* Styling for each section */
     .section {
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
       margin: 20px 0;
-      padding: 40px;
+      padding: 40px 20px;
       background-color: rgba(255, 255, 255, 0.1);
       width: 90%;
       max-width: 600px;
@@ -67,15 +65,14 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
+      position: relative;
     }
 
-    /* Show class applied on scroll */
     .section.show {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Additional styling for text */
     h1, h2 {
       font-weight: 400;
       margin-bottom: 15px;
@@ -88,34 +85,78 @@
       line-height: 1.6;
       font-size: 1.1em;
     }
+
+    .hidden-info {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.6s ease;
+    }
+
+    .section.active .hidden-info {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .view-more-link {
+      color: #2132c9;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .view-more-link:hover {
+      color: #4258e8;
+    }
   </style>
 </head>
 <body>
-  <!-- Progress bar container -->
   <div id="progressBarContainer">
     <div id="progressBar"></div>
   </div>
 
-  <!-- Content with modern styling -->
   <div class="section fade-in">
-    <h1>Welcome to My Website</h1>
+    <h1>Welcome to ItsYourARZ Website</h1>
     <p>Discover who I am, what I do, and what I'm passionate about!</p>
   </div>
+
   <div class="section fade-in">
     <h2>About Me</h2>
-    <p>I'm a creative professional who loves to build web experiences that stand out. With a focus on aesthetics and functionality, I bring ideas to life.</p>
+    <p>Click below to learn more about me.</p>
+    <div class="hidden-info">
+      <p>I am a passionate web developer with a love for creating beautiful and functional websites. I enjoy working with new technologies and building impactful solutions.</p>
+    </div>
+    <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
   </div>
+
   <div class="section fade-in">
     <h2>My Projects</h2>
-    <p>From web apps to design portfolios, explore my work to see what I've created and collaborated on. Each project represents a part of my journey in tech and design.</p>
+    <p>Click below to explore my projects.</p>
+    <div class="hidden-info">
+      <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios. Each project is a new adventure!</p>
+    </div>
+    <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
   </div>
+
   <div class="section fade-in">
     <h2>Contact Me</h2>
-    <p>Let's connect! Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
+    <p>Click below for contact options.</p>
+    <div class="hidden-info">
+      <p>Let's connect! Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
+    </div>
+    <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
   </div>
 
   <script>
-    // JavaScript for fade-in effect on scroll
+    function toggleInfo(link) {
+      const section = link.closest('.section');
+      section.classList.toggle("active");
+      link.textContent = section.classList.contains("active") ? "View Less" : "View More";
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll(".fade-in");
 
@@ -124,7 +165,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add("show");
-              observer.unobserve(entry.target); // Optional: stops observing once the element is shown
+              observer.unobserve(entry.target);
             }
           });
         },
@@ -136,7 +177,6 @@
       });
     });
 
-    // JavaScript for updating progress bar based on scroll position
     window.addEventListener("scroll", function() {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPosition = window.scrollY;
