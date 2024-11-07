@@ -10,25 +10,24 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Font for Blank's Script -->
   <style>
+    /* Font-face for the custom font (.otf file) */
     @font-face {
       font-family: 'BlanksScript';
-      src: url('/fonts/blank-script.ttf') format('truetype');
+      src: url('/fonts/blank-script.otf') format('opentype'); /* Use your .otf file here */
       font-weight: normal;
       font-style: normal;
     }
 
-    /* Applying the font to the specific class */
+    /* Apply the custom font to "It'sYourARZ" */
     .highlight {
       font-family: 'BlanksScript', cursive;
-      color: #f5a623;
+      color: #00bcd4; /* Dark Aqua Blue */
       font-weight: bold;
       font-size: 2em;
     }
-  </style>
 
-  <style>
+    /* Resetting some default styles for a cleaner look */
     * {
       margin: 0;
       padding: 0;
@@ -93,13 +92,6 @@
       margin-bottom: 15px;
       color: #e0e0e0;
       letter-spacing: 1px;
-    }
-
-    .highlight {
-      font-family: 'BlanksScript', cursive;
-      color: #f5a623;
-      font-weight: bold;
-      font-size: 2em;
     }
 
     p {
