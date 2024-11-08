@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The ARS Realm</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -20,51 +21,11 @@
       background-image: url('https://wallpaper.dog/large/10921241.jpg');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
       color: #ffffff;
       text-align: center;
       overflow-x: hidden;
       opacity: 0;
       transition: opacity 1s ease;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-attachment: fixed;
-    }
-
-    /* Sticky Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 20px;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-    }
-
-    nav ul li {
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 1.2em;
-      font-weight: 500;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #00bcd4;
     }
 
     main {
@@ -74,24 +35,47 @@
       padding: 20px;
       opacity: 1;
       transition: opacity 1s ease;
-      margin-top: 60px; /* To account for the sticky navbar */
     }
 
+    /* Progress Bar Container */
     #progressBarContainer {
       width: 100%;
-      height: 3px;
+      height: 5px;
       background-color: rgba(255, 255, 255, 0.2);
       position: fixed;
       top: 0;
       left: 0;
       z-index: 9999;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
+    /* Progress Bar */
     #progressBar {
       height: 100%;
       width: 0;
-      background: linear-gradient(to right, #2132c9, #4258e8);
-      transition: width 0.15s ease;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      border-radius: 10px 0 0 10px;
+      transition: width 0.15s ease-in-out;
+      animation: progressBarAnimation 3s ease-out infinite;
+    }
+
+    /* Animated Effect */
+    @keyframes progressBarAnimation {
+      0% {
+        width: 0;
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+      }
+      50% {
+        width: 50%;
+        background: linear-gradient(to right, #00b3b3, #0059ff);
+      }
+      100% {
+        width: 100%;
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+      }
     }
 
     .section {
@@ -125,21 +109,21 @@
       font-weight: 400;
       color: #e0e0e0;
       letter-spacing: 1px;
-      font-size: 2.2em;
+      font-size: 1.6em;
       margin-bottom: 10px;
     }
 
     h1 .highlight {
       font-family: 'Pacifico', cursive;
       color: #00bcd4;
-      font-size: 2em;
+      font-size: 1.3em;
       font-weight: bold;
     }
 
     p {
       color: #b0b0b0;
       line-height: 1.6;
-      font-size: 1.2em;
+      font-size: 1.1em;
     }
 
     .hidden-info {
@@ -161,7 +145,7 @@
       margin-top: 15px;
       font-weight: bold;
       text-decoration: none;
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: color 0.3s ease, transform 0.3s;
     }
 
@@ -186,33 +170,45 @@
       background-color: #4754C8;
     }
 
-    /* Light/Dark Mode */
-    body[data-theme="dark"] {
-      background-color: #121212;
-      color: #e0e0e0;
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    body[data-theme="dark"] nav {
-      background: rgba(0, 0, 0, 0.9);
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
       h1 {
-        font-size: 1.6em;
+        font-size: 1.4em;
       }
       .section {
         padding: 20px;
         width: 95%;
       }
       p, .view-more-link {
-        font-size: 1.1em;
+        font-size: 1em;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
       .section {
         width: 100%;
@@ -226,27 +222,17 @@
 </head>
 <body onload="document.body.style.opacity = 1;">
 
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">My Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="javascript:void(0)" onclick="toggleTheme()">🌙 / 🌞</a></li>
-    </ul>
-  </nav>
-
   <div id="progressBarContainer">
     <div id="progressBar"></div>
   </div>
 
   <main>
-    <section id="home" class="section fade-in">
+    <div class="section fade-in">
       <h1>Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
       <p>Discover who I am, what I do, and what I'm passionate about!</p>
-    </section>
+    </div>
 
-    <section id="about" class="section fade-in">
+    <div class="section fade-in">
       <h2>About Me</h2>
       <p>Click below to learn more about me.</p>
       <div class="hidden-info">
@@ -255,9 +241,9 @@
         <p>Building impactful solutions that make a difference is what drives me every day.</p>
       </div>
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-    </section>
+    </div>
 
-    <section id="projects" class="section fade-in">
+    <div class="section fade-in">
       <h2>My Projects</h2>
       <p>Click below to explore my projects.</p>
       <div class="hidden-info">
@@ -265,9 +251,9 @@
         <p>Each project represents a new adventure in my journey with technology and design.</p>
       </div>
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-    </section>
+    </div>
 
-    <section id="contact" class="section fade-in">
+    <div class="section fade-in">
       <h2>Contact Me</h2>
       <p>Click below for contact options.</p>
       <div class="hidden-info">
@@ -277,7 +263,7 @@
         <a href="https://discord.gg/Qbjv8RKt" class="discord-button" target="_blank">Join the Community</a>
       </div>
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-    </section>
+    </div>
   </main>
 
   <script>
@@ -285,11 +271,6 @@
       const section = link.closest('.section');
       section.classList.toggle("active");
       link.textContent = section.classList.contains("active") ? "View Less" : "View More";
-    }
-
-    function toggleTheme() {
-      const currentTheme = document.body.getAttribute('data-theme');
-      document.body.setAttribute('data-theme', currentTheme === 'dark' ? '' : 'dark');
     }
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -300,6 +281,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add("show");
+              entry.target.style.animation = "fadeUp 1s ease";
               observer.unobserve(entry.target);
             }
           });
