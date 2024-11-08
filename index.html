@@ -13,6 +13,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -28,6 +29,26 @@
       min-height: 100vh;
       background-attachment: fixed;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Overlay animation for the background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+      animation: backgroundAnimation 10s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes backgroundAnimation {
+      0% { transform: translateX(-20px) translateY(-20px); }
+      100% { transform: translateX(20px) translateY(20px); }
     }
 
     #progressBarContainer {
@@ -59,13 +80,21 @@
       border-radius: 15px;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid transparent;
       backdrop-filter: blur(10px);
+      transition: box-shadow 0.3s ease, border 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .section.show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .section:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
     h1 {
@@ -109,11 +138,12 @@
       font-weight: bold;
       text-decoration: none;
       font-size: 1.1em;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s;
     }
 
     .view-more-link:hover {
       color: #008c99;
+      transform: scale(1.1);
     }
 
     .discord-button {
