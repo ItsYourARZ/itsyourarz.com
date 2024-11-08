@@ -22,33 +22,19 @@
       background-size: cover;
       background-position: center;
       color: #ffffff;
+      text-align: center;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    main {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      min-height: 100vh;
-      background-attachment: fixed;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Overlay animation for the background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-      animation: backgroundAnimation 10s infinite alternate;
-      z-index: -1;
-    }
-
-    @keyframes backgroundAnimation {
-      0% { transform: translateX(-20px) translateY(-20px); }
-      100% { transform: translateX(20px) translateY(20px); }
+      opacity: 1;
+      transition: opacity 1s ease;
     }
 
     #progressBarContainer {
@@ -71,7 +57,7 @@
     .section {
       opacity: 0;
       transform: translateY(50px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 1s ease, transform 1s ease;
       margin: 20px 0;
       padding: 30px 20px;
       background-color: rgba(255, 255, 255, 0.1);
@@ -82,9 +68,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       border: 1px solid transparent;
       backdrop-filter: blur(10px);
-      transition: box-shadow 0.3s ease, border 0.3s ease;
       position: relative;
-      z-index: 1;
     }
 
     .section.show {
@@ -162,6 +146,29 @@
       background-color: #4754C8;
     }
 
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
       h1 {
         font-size: 1.4em;
@@ -189,48 +196,51 @@
     }
   </style>
 </head>
-<body>
+<body onload="document.body.style.opacity = 1;">
+
   <div id="progressBarContainer">
     <div id="progressBar"></div>
   </div>
 
-  <div class="section fade-in">
-    <h1>Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
-    <p>Discover who I am, what I do, and what I'm passionate about!</p>
-  </div>
-
-  <div class="section fade-in">
-    <h2>About Me</h2>
-    <p>Click below to learn more about me.</p>
-    <div class="hidden-info">
-      <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
-      <p>I enjoy working with new technologies.</p>
-      <p>Building impactful solutions that make a difference is what drives me every day.</p>
+  <main>
+    <div class="section fade-in">
+      <h1>Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
+      <p>Discover who I am, what I do, and what I'm passionate about!</p>
     </div>
-    <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-  </div>
 
-  <div class="section fade-in">
-    <h2>My Projects</h2>
-    <p>Click below to explore my projects.</p>
-    <div class="hidden-info">
-      <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
-      <p>Each project represents a new adventure in my journey with technology and design.</p>
+    <div class="section fade-in">
+      <h2>About Me</h2>
+      <p>Click below to learn more about me.</p>
+      <div class="hidden-info">
+        <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
+        <p>I enjoy working with new technologies.</p>
+        <p>Building impactful solutions that make a difference is what drives me every day.</p>
+      </div>
+      <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
-    <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-  </div>
 
-  <div class="section fade-in">
-    <h2>Contact Me</h2>
-    <p>Click below for contact options.</p>
-    <div class="hidden-info">
-      <p>Let's connect!</p>
-      <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
-      <p><strong>Join my community on Discord!</strong></p>
-      <a href="https://discord.gg/Qbjv8RKt" class="discord-button" target="_blank">Join the Community</a>
+    <div class="section fade-in">
+      <h2>My Projects</h2>
+      <p>Click below to explore my projects.</p>
+      <div class="hidden-info">
+        <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
+        <p>Each project represents a new adventure in my journey with technology and design.</p>
+      </div>
+      <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
-    <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-  </div>
+
+    <div class="section fade-in">
+      <h2>Contact Me</h2>
+      <p>Click below for contact options.</p>
+      <div class="hidden-info">
+        <p>Let's connect!</p>
+        <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
+        <p><strong>Join my community on Discord!</strong></p>
+        <a href="https://discord.gg/Qbjv8RKt" class="discord-button" target="_blank">Join the Community</a>
+      </div>
+      <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+    </div>
+  </main>
 
   <script>
     function toggleInfo(link) {
@@ -247,16 +257,19 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add("show");
+              entry.target.style.animation = "fadeUp 1s ease";
               observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.2 }
       );
 
       sections.forEach(section => {
         observer.observe(section);
       });
+
+      document.body.style.opacity = 1;
     });
 
     window.addEventListener("scroll", function() {
