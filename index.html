@@ -58,7 +58,7 @@
       background: linear-gradient(to right, #00c6ff, #0072ff);
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
       border-radius: 10px 0 0 10px;
-      transition: width 0.5s ease-in-out;  /* Make the transition slower */
+      transition: none;  /* No transition */
     }
 
     .section {
@@ -283,8 +283,7 @@
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPosition = window.scrollY;
       const scrollPercentage = (scrollPosition / scrollHeight) * 100;
-      const smoothScrollPercentage = Math.min(scrollPercentage * 0.8 + document.getElementById("progressBar").offsetWidth / 100, 100);
-      document.getElementById("progressBar").style.width = `${smoothScrollPercentage}%`;
+      document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
     });
   </script>
 </body>
