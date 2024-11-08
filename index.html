@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The personal website of It'sYourARZ showcasing projects, about me, and contact details.">
+  <meta name="author" content="It'sYourARZ">
+  <meta name="theme-color" content="#00bcd4">
   <title>The ARS Realm</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -26,6 +29,10 @@
       overflow-x: hidden;
       opacity: 0;
       transition: opacity 1s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     main {
@@ -35,6 +42,7 @@
       padding: 20px;
       opacity: 1;
       transition: opacity 1s ease;
+      z-index: 10;
     }
 
     #progressBarContainer {
@@ -208,8 +216,8 @@
       <p>Discover who I am, what I do, and what I'm passionate about!</p>
     </div>
 
-    <div class="section fade-in">
-      <h2>About Me</h2>
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about-me">About Me</h2>
       <p>Click below to learn more about me.</p>
       <div class="hidden-info">
         <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
@@ -219,8 +227,8 @@
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
 
-    <div class="section fade-in">
-      <h2>My Projects</h2>
+    <div class="section fade-in" aria-labelledby="my-projects">
+      <h2 id="my-projects">My Projects</h2>
       <p>Click below to explore my projects.</p>
       <div class="hidden-info">
         <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
@@ -229,14 +237,14 @@
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
 
-    <div class="section fade-in">
-      <h2>Contact Me</h2>
+    <div class="section fade-in" aria-labelledby="contact-me">
+      <h2 id="contact-me">Contact Me</h2>
       <p>Click below for contact options.</p>
       <div class="hidden-info">
         <p>Let's connect!</p>
         <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
         <p><strong>Join my community on Discord!</strong></p>
-        <a href="https://discord.gg/Qbjv8RKt" class="discord-button" target="_blank">Join the Community</a>
+        <a href="https://discord.gg/Qbjv8RKt" class="discord-button" target="_blank" aria-label="Join the It'sYourARZ community on Discord">Join the Community</a>
       </div>
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
