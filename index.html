@@ -10,9 +10,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <style>
     * {
@@ -107,7 +108,7 @@
       font-weight: bold;
     }
 
-    .highme {
+    .highlightfortext {
       font-family: "Edu AU VIC WA NT Pre", sans-serif, cursive;
       color: #7581eb;
     }
@@ -211,7 +212,7 @@
     </div>
 
     <div class="section fade-in" aria-labelledby="about-me">
-      <h2 id="about-me"><span class="highme">About Me</span></h2>
+      <h2 id="about-me"><span class="highlightfortext">About Me</span></h2>
       <p>Click below to learn more about me.</p>
       <div class="hidden-info">
         <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
@@ -222,7 +223,7 @@
     </div>
 
     <div class="section fade-in" aria-labelledby="my-projects">
-      <h2 id="my-projects"><span class="highme">My Projects</span></h2>
+      <h2 id="my-projects"><span class="highlightfortext">My Projects</span></h2>
       <p>Click below to explore my projects.</p>
       <div class="hidden-info">
         <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
@@ -237,7 +238,7 @@
     </div>
 
     <div class="section fade-in" aria-labelledby="contact-me">
-      <h2 id="contact-me"><span class="highme">Contact Me</span></h2>
+      <h2 id="contact-me"><span class="highlightfortext">Contact Me</span></h2>
       <p>Click below for contact options.</p>
       <div class="hidden-info">
         <p>Let's connect!</p>
@@ -248,6 +249,23 @@
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
   </main>
+
+  <form action="submit_contact.php" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <!-- reCAPTCHA Widget -->
+  <div class="g-recaptcha" data-sitekey="6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28"></div>
+
+  <button type="submit">Submit</button>
+  </form>
+
 
   <footer>
     <p>© It'sYourARZ 2024 All Rights Reserved</p>
