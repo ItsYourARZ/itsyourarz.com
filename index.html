@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28"></script>
 
   <style>
     * {
@@ -250,20 +250,20 @@
     </div>
   </main>
 
-  <form action="submit_contact.php" method="post">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>
+  <form id="contactForm" action="submit_contact.php" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" required></textarea>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
 
-  <!-- reCAPTCHA Widget -->
-  <div class="g-recaptcha" data-sitekey="6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28"></div>
+    <!-- Hidden input to store the token -->
+    <input type="hidden" name="recaptcha_token" id="recaptchaToken">
 
-  <button type="submit">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 
 
@@ -307,6 +307,12 @@
       const scrollPercentage = (scrollPosition / scrollHeight) * 100;
       document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
     });
+
+    grecaptcha.ready(function() {
+    grecaptcha.execute('6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28', {action: 'submit'}).then(function(token) {
+      document.getElementById('recaptchaToken').value = token;
+    });
+  });
   </script>
 </body>
 </html>
