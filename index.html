@@ -196,29 +196,6 @@
         font-size: 0.9em;
       }
     }
-
-    /* Button Style (inside the section) */
-button {
-  padding: 10px 20px;
-  font-size: 1.2em;
-  background-color: #00bcd4;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 15px;
-}
-
-button:hover {
-  background-color: #008c99;
-}
-
-/* Optional: Add some spacing or adjust the button inside the hidden-info section */
-.hidden-info {
-  margin-top: 15px;
-  text-align: center;
-}
   </style>
 </head>
 <body onload="document.body.style.opacity = 1;">
@@ -268,23 +245,7 @@ button:hover {
       </div>
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
-
-    <div class="section fade-in" aria-labelledby="music-control">
-  <h2 id="music-control"><span class="highme">Background Music</span></h2>
-  <p>Click below to play or pause the background music.</p>
-  <div class="hidden-info">
-    <button onclick="toggleMusic()" style="padding: 10px 20px; font-size: 1.2em; background-color: #00bcd4; color: white; border-radius: 5px; border: none; cursor: pointer; transition: background-color 0.3s;">
-      Play Music
-    </button>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
   </main>
-
-<audio id="backgroundMusic" controls autoplay loop>
-  <source src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&dl=1" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
 
   <footer>
     <p>© It'sYourARZ 2024 All Rights Reserved</p>
@@ -326,11 +287,6 @@ button:hover {
       const scrollPercentage = (scrollPosition / scrollHeight) * 100;
       document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
     });
-
-    function playMusic() {
-  const audio = document.getElementById("background-music");
-  audio.play();
-}
   </script>
 </body>
 </html>
