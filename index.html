@@ -197,28 +197,27 @@
       }
     }
 
-    .song-box {
-  border: 2px solid rgba(255, 255, 255, 0.6); /* Semi-transparent white border */
-  border-radius: 15px; /* Rounded corners */
-  padding: 20px;
-  margin: 20px 0;
-  background: rgba(255, 255, 255, 0.3); /* Translucent background */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  color: #fff; /* White text to contrast with the translucent background */
-  font-family: 'Roboto', sans-serif;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Subtle text shadow for readability */
+    /* Button Style (inside the section) */
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #00bcd4;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
 }
 
-.song-box h2 {
-  color: #e3f2fd; /* Light ice-blue color */
-  margin-bottom: 10px;
-  font-family: 'Roboto', sans-serif;
+button:hover {
+  background-color: #008c99;
 }
 
-.song-box p {
-  margin: 5px 0;
-  font-size: 16px;
+/* Optional: Add some spacing or adjust the button inside the hidden-info section */
+.hidden-info {
+  margin-top: 15px;
+  text-align: center;
 }
   </style>
 </head>
@@ -270,13 +269,15 @@
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
 
-    <div class="song-box">
-  <h2>About the Song</h2>
-  <p><strong>Title:</strong> Tourist</p>
-  <p><strong>Artist:</strong> RJ Pasin</p>
-  <p><strong>Album:</strong> Exploring Horizons</p>
-  <p><strong>Genre:</strong> Indie Pop</p>
-  <p><strong>Release Date:</strong> September 12, 2024</p>
+    <div class="section fade-in" aria-labelledby="music-control">
+  <h2 id="music-control"><span class="highme">Background Music Control</span></h2>
+  <p>Click below to play or pause the background music.</p>
+  <div class="hidden-info">
+    <button onclick="toggleMusic()" style="padding: 10px 20px; font-size: 1.2em; background-color: #00bcd4; color: white; border-radius: 5px; border: none; cursor: pointer; transition: background-color 0.3s;">
+      Toggle Music
+    </button>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
   </main>
 
