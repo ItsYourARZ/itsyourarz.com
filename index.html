@@ -109,6 +109,11 @@ h1 .highlight {
   font-weight: bold;
 }
 
+.highme {
+  font-family: "Edu AU VIC WA NT Pre", sans-serif;
+  color: #7581eb;
+}
+
 p {
   color: #b0b0b0;
   line-height: 1.6;
@@ -167,34 +172,37 @@ footer {
   font-size: 0.9em;
 }
 
-/* Audio Box Design */
+/* Background Music Box */
 .audio-box {
-  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   width: 90%;
-  max-width: 400px;
-  text-align: center;
+  max-width: 600px;
+  margin-top: 20px;
 }
 
-audio {
+.audio-box h2 {
+  font-size: 1.5em;
+  color: #e0e0e0;
+}
+
+.audio-box audio {
   width: 100%;
-  margin-top: 10px;
   border-radius: 8px;
+  margin-top: 10px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   h1 {
     font-size: 1.4em;
   }
-
   .section {
     padding: 20px;
     width: 95%;
   }
-
   p, .view-more-link {
     font-size: 1em;
   }
@@ -204,12 +212,10 @@ audio {
   h1 {
     font-size: 1.2em;
   }
-
   .section {
     width: 100%;
     padding: 15px;
   }
-
   p {
     font-size: 0.9em;
   }
